@@ -18,9 +18,6 @@ class Solution(object):
         cur_pos = start_pos
         while count < len(nums):
             next_pos = (cur_pos + k) % len(nums)
-            tmp = nums[next_pos]
-            nums[next_pos] = nums[start_pos]
-            nums[start_pos] = tmp
 
             count += 1
 
@@ -28,6 +25,7 @@ class Solution(object):
                 start_pos+=1
                 cur_pos = start_pos
             else:
+                nums[start_pos], nums[next_pos] = nums[next_pos], nums[start_pos]
                 cur_pos = next_pos
 def main():
     solution = Solution()
